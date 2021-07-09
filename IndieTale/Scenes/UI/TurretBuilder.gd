@@ -49,7 +49,7 @@ func building_turret() -> void:
 	# The third phase: building
 	elif building_phase == 2:
 		self.remove_child(turret_instance)
-#		print(get_node("/root/World/Turrets"))
+		print(get_node("/root/World/Turrets"))
 		get_node("/root/World/Turrets").add_child(turret_instance)
 		
 		# if building success, doing clean up
@@ -64,4 +64,5 @@ func instance_turret() -> void:
 
 func _on_TurretBlue_pressed() -> void:
 	state = Blue
+	print("pressed!")
 	instance_turret()
