@@ -12,12 +12,9 @@ var state: int = Nothing
 var building_phase = 0
 var turret_instance = null
 
-const turret_node_path = "res://Scenes/Turrets/Turret.tscn"
+const turret_node_path = "res://Scenes/Turrets/FakeTurret.tscn"
 const texture_path = ["res://Assets/Turrets/TurretTest.png", "res://Assets/Turrets/Turret.png"]
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 func _process(_delta):		
 	if state != Nothing:
@@ -35,15 +32,17 @@ func building_turret() -> void:
 	# The first phase: position
 	if building_phase == 0:
 		turret_instance.position = get_global_mouse_position()
-		if Input.is_action_just_pressed("ui_left_click"):
-#			print("left click")
-			building_phase += 1
+		if turret_instance.get_overlapping_bodies().size() == 0:
+			turret_instance.get_node("TurretSprite").modulate = Color(1.0, 1.0, 1.0, 1.0)
+			if Input.is_action_just_pressed("ui_left_click"):
+				building_phase += 1
+		else:
+			turret_instance.get_node("TurretSprite").modulate = Color(1.0, 0.0, 0.0, 1.0)
 
 	# The second phase: rotation
 	elif building_phase == 1:
 		turret_instance.rotation = get_mouse_rotation()
 		if Input.is_action_just_pressed("ui_left_click"):
-#			print("left click", turret_instance.rotation)
 			building_phase += 1
 
 	# The third phase: building
