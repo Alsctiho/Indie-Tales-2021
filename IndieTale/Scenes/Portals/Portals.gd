@@ -48,3 +48,27 @@ func fire(vel, rot):
 	bullet_instance.creator = self
 	get_parent().add_child(bullet_instance)
 	
+func change_position(new_pos):
+	var new_rot = 0
+	var screen_w = get_viewport_rect().size.x
+	var screen_h = get_viewport_rect().size.y
+	if new_pos.x < 0:
+		#屏幕左边
+		new_pos.x = 0
+		new_rot = 90
+	if new_pos.x > screen_w:
+		#屏幕右边
+		new_pos.x = screen_w
+		new_rot = 270
+	if new_pos.y < 0:
+		#屏幕上边
+		new_pos.y = 0
+		new_rot = 180
+	if new_pos.y > screen_h:
+		#屏幕下面
+		new_pos.y = screen_h
+		new_rot = 0
+		
+	if (new_pos - get_node(otherPortalPath).position).length() > 50:
+		position = new_pos
+		rotation_degrees = new_rot
