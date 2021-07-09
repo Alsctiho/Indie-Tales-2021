@@ -46,7 +46,7 @@ func fire(vel, rot):
 	bullet_instance.rotation = new_rot
 	bullet_instance.apply_impulse(Vector2.ZERO, Vector2(vel, 0).rotated(new_rot))
 	bullet_instance.creator = self
-	get_parent().add_child(bullet_instance)
+	get_parent().call_deferred("add_child", bullet_instance)
 	
 func change_position(new_pos):
 	var new_rot = 0
