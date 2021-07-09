@@ -10,6 +10,7 @@ script = ExtResource( 1 )
 [node name="Turrets" type="Node2D" parent="."]
 
 [node name="UI" parent="." instance=ExtResource( 2 )]
+rect_min_size = Vector2( 1024, 600 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 192, 192 )
