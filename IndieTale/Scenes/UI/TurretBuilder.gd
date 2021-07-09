@@ -8,7 +8,7 @@ enum {
 	Yellow,
 }
 
-var state = Nothing
+var state: int = Nothing
 var building_phase = 0
 var turret_instance = null
 
@@ -50,7 +50,7 @@ func building_turret() -> void:
 	elif building_phase == 2:
 		self.remove_child(turret_instance)
 		print(get_node("/root/World/Turrets"))
-		get_node("/root/World/Turrets").add_child(turret_instance)
+		get_node("/root/World/Turrets").build_turret(turret_instance.position, turret_instance.rotation, state)
 		
 		# if building success, doing clean up
 		turret_instance = null

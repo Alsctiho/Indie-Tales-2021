@@ -2,15 +2,13 @@ extends Node2D
 
 
 enum {
-	Test,
+	Nothing,
 	Blue,
+	Red,
+	Yellow,
 }
 
 var turret_type_names = ["res://Assets/Turrets/TurretTest.png", "res://Assets/Turrets/Turret.png"]
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	build_turret(Vector2(300, 300), deg2rad(50), Blue)
 
 
 # Return true if building success, return false if it fails
