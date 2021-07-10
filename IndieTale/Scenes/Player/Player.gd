@@ -13,6 +13,7 @@ const HIT_FRICTION = 3000
 const HIT_DISTANCE = 1.5
 
 var health = 10
+var money = 0
 
 enum PLAYER_STATE {
 	hit,
@@ -130,7 +131,7 @@ func get_hit(dir):
 	timer.start() #to start
 	
 func update_health():
-	print(health)
+	print("HP: " + String(health))
 	if (health <= 0):
 		get_tree().reload_current_scene()
 
@@ -146,4 +147,15 @@ func _on_Hitbox_body_entered(monster):
 	
 	get_hit((position - monster.position).normalized() * HIT_DISTANCE)
 	monster.explode()
-		
+
+func gain_money(amount):
+	money += amount
+	print("Money: " + String(money))
+	
+func use_money(amount) -> bool:
+	if (money >= amount):
+		# can use money
+		money -= amount
+		return true
+	else:
+		return false

@@ -3,6 +3,7 @@ extends RigidBody2D
 #const FRICTION = 0.8
 #
 var bullet_speed = 2000
+var damage = 2
 const MIN_SPEED = 0.9
 #
 var started_moving
