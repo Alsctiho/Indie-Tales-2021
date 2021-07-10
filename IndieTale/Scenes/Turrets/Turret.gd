@@ -25,6 +25,6 @@ func _on_timer_timeout() -> void:
 	get_node("/root/World").add_child(bullet_instance)
 	
 	if !$AudioStreamPlayer2D.is_playing():
-		$AudioStreamPlayer2D.volume_db = -1 * get_parent().get_child_count()
+		$AudioStreamPlayer2D.volume_db = -1 * get_parent().get_child_count() - 2
 		$AudioStreamPlayer2D.play()
 	

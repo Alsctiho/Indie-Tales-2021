@@ -12,7 +12,7 @@ var state: int = Nothing
 var building_phase = 0
 var turret_instance = null
 
-const TURRENT_COST = 15
+var turret_cost = 10
 
 const turret_node_path = "res://Scenes/Turrets/FakeTurret.tscn"
 const texture_path = ["res://Assets/Turrets/TurretTest.png", "res://Assets/Turrets/Turret.png"]
@@ -56,10 +56,11 @@ func building_turret() -> void:
 		self.remove_child(turret_instance)
 		print(get_node("/root/World/Turrets"))
 		get_node("/root/World/Turrets").build_turret(turret_instance.position, turret_instance.rotation, state)
-		
-		# If building success, doing clean up
 		if !$AudioStreamPlayer.is_playing():
+			$AudioStreamPlayer.volume_db = -5
 			$AudioStreamPlayer.play()
+
+		# If building success, doing clean up
 		turret_instance = null
 		building_phase = 0
 		state = Nothing
@@ -73,6 +74,7 @@ func _on_TurretBlue_pressed() -> void:
 	state = Blue
 #	print("pressed!", building_phase)
 	# The zero-th phase: preperation
-	if building_phase == 0 && playerNode.use_money(TURRENT_COST):
+	if building_phase == 0 && playerNode.use_money(turret_cost):
 		instance_turret()
 		building_phase += 1
+		turret_cost += 5

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UI/TurretBuilder.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Assets/UI/CoinIcon.png" type="Texture" id=10]
 [ext_resource path="res://Scenes/UI/Label.gd" type="Script" id=11]
 [ext_resource path="res://Scenes/UI/TurretBlue.gd" type="Script" id=12]
+[ext_resource path="res://Scenes/UI/HealthButton.gd" type="Script" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 29
@@ -75,25 +76,53 @@ texture_normal = ExtResource( 3 )
 stretch_mode = 3
 script = ExtResource( 12 )
 
-[node name="TextureButton2" type="TextureButton" parent="TurretBuilderUI/VBoxContainer"]
-margin_left = 32.0
-margin_top = 202.0
-margin_right = 132.0
-margin_bottom = 302.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource( 3 )
-stretch_mode = 3
+[node name="TurretLabel" type="Label" parent="TurretBuilderUI/VBoxContainer/TurretBlue"]
+margin_left = -32.7491
+margin_top = 80.0
+margin_right = 131.251
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 20 )
+text = "15 Gold"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TextureButton3" type="TextureButton" parent="TurretBuilderUI/VBoxContainer"]
-margin_left = 32.0
-margin_top = 306.0
-margin_right = 132.0
-margin_bottom = 406.0
+[node name="MarginContainer2" type="MarginContainer" parent="TurretBuilderUI/VBoxContainer"]
+margin_top = 202.0
+margin_right = 164.0
+margin_bottom = 232.0
+rect_min_size = Vector2( 0, 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthButton" type="TextureButton" parent="TurretBuilderUI/VBoxContainer"]
+margin_left = 42.0
+margin_top = 236.0
+margin_right = 122.0
+margin_bottom = 316.0
+rect_min_size = Vector2( 80, 80 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 6 )
+expand = true
 stretch_mode = 3
+script = ExtResource( 13 )
+
+[node name="HealthLabel" type="Label" parent="TurretBuilderUI/VBoxContainer/HealthButton"]
+margin_left = -42.017
+margin_top = 60.7424
+margin_right = 121.983
+margin_bottom = 80.7424
+rect_min_size = Vector2( 0, 20 )
+text = "5 Gold"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="LifeBarUI" type="NinePatchRect" parent="."]
 margin_left = 20.0
@@ -193,5 +222,6 @@ __meta__ = {
 }
 
 [connection signal="pressed" from="TurretBuilderUI/VBoxContainer/TurretBlue" to="TurretBuilder" method="_on_TurretBlue_pressed"]
+[connection signal="pressed" from="TurretBuilderUI/VBoxContainer/HealthButton" to="TurretBuilderUI/VBoxContainer/HealthButton" method="_on_HealthButton_pressed"]
 
 [editable path="TurretBuilder"]

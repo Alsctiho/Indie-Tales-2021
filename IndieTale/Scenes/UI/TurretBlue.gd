@@ -6,8 +6,10 @@ extends TextureButton
 # var b = "text"
 
 var playerNode = null
+var turret_cost = 5
 
-const TURRENT_COST = 15
+onready var turret_label = $TurretLabel
+
 
 func _ready():
 	playerNode = get_node("/root/World/Player")
@@ -16,7 +18,10 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (playerNode.money >= TURRENT_COST):
+	turret_cost = get_node("/root/World/GUI/UI/TurretBuilder").turret_cost
+	if (playerNode.money >= turret_cost):
 		modulate.a = 1.0
 	else:
 		modulate.a = 0.5
+	
+	turret_label.text = str(turret_cost) + " Gold"

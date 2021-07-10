@@ -12,6 +12,7 @@ const HIT_ACCEL = 8000
 const HIT_FRICTION = 3000
 const HIT_DISTANCE = 1.5
 
+const max_health = 10
 var health = 10
 var money = 0
 var score = 0
@@ -150,6 +151,14 @@ func _on_Hitbox_body_entered(monster):
 	
 	get_hit((position - monster.position).normalized() * HIT_DISTANCE)
 	monster.explode()
+
+func gain_health(amount: int, cost: int) -> bool:
+	if health + amount > max_health:
+		return false
+	else:
+		health += amount
+		money -= cost
+		return true
 
 func gain_money(amount):
 	money += amount
