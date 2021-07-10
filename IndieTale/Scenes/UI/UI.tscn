@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UI/TurretBuilder.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Assets/Fonts/Silver.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://Assets/UI/CoinIcon.png" type="Texture" id=10]
 [ext_resource path="res://Scenes/UI/Label.gd" type="Script" id=11]
+[ext_resource path="res://Scenes/UI/TurretBlue.gd" type="Script" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 29
@@ -72,6 +73,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource( 3 )
 stretch_mode = 3
+script = ExtResource( 12 )
 
 [node name="TextureButton2" type="TextureButton" parent="TurretBuilderUI/VBoxContainer"]
 margin_left = 32.0
