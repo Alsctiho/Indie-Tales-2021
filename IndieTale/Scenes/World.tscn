@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/World.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UI/UI.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/Portals/MonsterPortal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Monsters/MonsterPortalAdder.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Turrets/Turret.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Sounds/BGM.wav" type="AudioStream" id=10]
 
 [node name="World" type="Node2D"]
 scale = Vector2( 1, 0.99561 )
@@ -78,3 +79,8 @@ position = Vector2( 704, -2.14626e-06 )
 rotation = 3.14159
 type = 1
 otherPortalPath = NodePath("../Portals5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -5.0
+autoplay = true
