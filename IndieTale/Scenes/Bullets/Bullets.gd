@@ -11,6 +11,10 @@ var creator
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	z_index = 10
+	get_node("VisibilityNotifier2D").connect("screen_exited", self, "_on_screen_exited")
+
+func _on_screen_exited():
+	queue_free()
 
 #func _physics_process(delta):
 #	var friction_force = -linear_velocity * FRICTION * delta
