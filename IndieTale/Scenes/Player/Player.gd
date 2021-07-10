@@ -14,6 +14,7 @@ const HIT_DISTANCE = 1.5
 
 var health = 10
 var money = 0
+var score = 0
 
 enum PLAYER_STATE {
 	hit,
@@ -153,6 +154,10 @@ func _on_Hitbox_body_entered(monster):
 func gain_money(amount):
 	money += amount
 	print("Money: " + String(money))
+
+func gain_score(amount):
+	score += amount
+	print("Score: " + String(score))
 	
 func use_money(amount) -> bool:
 	if (money >= amount):

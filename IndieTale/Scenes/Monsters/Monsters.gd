@@ -71,4 +71,5 @@ func _on_Hitbox_body_entered(bullet):
 	
 func explode():
 	playerNode.gain_money(1)
+	playerNode.gain_score(10)
 	queue_free()
