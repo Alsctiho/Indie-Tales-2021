@@ -21,6 +21,8 @@ const APPEAR_TIME = 0.5
 
 var opacity = 0.0
 
+const ExplodeScene = preload("res://Scenes/Monsters/MonsterExplode.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	playerNode = get_node("/root/World/Player")
@@ -70,6 +72,12 @@ func _on_Hitbox_body_entered(bullet):
 #	queue_free()
 	
 func explode():
+	var explosion = ExplodeScene.instance()
+	explosion.position = position
+	explosion.set_audio_db(-get_parent().get_child_count())
+	
+	get_parent().add_child(explosion)
+	
 	playerNode.gain_money(1)
 	playerNode.gain_score(10)
 	queue_free()

@@ -25,7 +25,7 @@ func _on_timer_timeout():
 	var rand_pos = Vector2(rand_range(0, win_size.x), rand_range(0, win_size.y))
 	var monster_portal = MonsterPortal.instance()
 	monster_portal.position = rand_pos
-	add_child(monster_portal)
+	get_parent().add_child(monster_portal)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

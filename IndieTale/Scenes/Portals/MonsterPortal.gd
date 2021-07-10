@@ -23,4 +23,4 @@ func _on_Timer_timeout():
 	var monster = monster_scene.instance()
 	monster.position = position
 	monster.rotation = rotation
-	get_parent().call_deferred("add_child", monster)
+	get_parent().get_node("MonstersParent").call_deferred("add_child", monster)

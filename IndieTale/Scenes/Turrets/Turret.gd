@@ -24,3 +24,7 @@ func _on_timer_timeout() -> void:
 	bullet_instance.apply_impulse(Vector2.ZERO, Vector2(bullet_instance.bullet_speed, 0).rotated(rotation - PI/2))
 	get_node("/root/World").add_child(bullet_instance)
 	
+	if !$AudioStreamPlayer2D.is_playing():
+		$AudioStreamPlayer2D.volume_db = -1 * get_parent().get_child_count()
+		$AudioStreamPlayer2D.play()
+	

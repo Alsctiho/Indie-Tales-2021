@@ -50,3 +50,5 @@ otherPortalPath = NodePath("../Portals")
 position = Vector2( 72, 385.693 )
 
 [node name="MonsterPortalAdder" parent="." instance=ExtResource( 8 )]
+
+[node name="MonstersParent" type="Node2D" parent="."]

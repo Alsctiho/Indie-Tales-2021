@@ -16,12 +16,13 @@ const TURRENT_COST = 15
 
 const turret_node_path = "res://Scenes/Turrets/FakeTurret.tscn"
 const texture_path = ["res://Assets/Turrets/TurretTest.png", "res://Assets/Turrets/Turret.png"]
+#const BuildSound = preload("res://Assets/Sounds/build.wav")
 
 var playerNode = null
 
 func _ready():
 	playerNode = get_node("/root/World/Player")
-
+	
 func _process(_delta):		
 	if state != Nothing:
 		building_turret()
@@ -57,6 +58,8 @@ func building_turret() -> void:
 		get_node("/root/World/Turrets").build_turret(turret_instance.position, turret_instance.rotation, state)
 		
 		# If building success, doing clean up
+		if !$AudioStreamPlayer.is_playing():
+			$AudioStreamPlayer.play()
 		turret_instance = null
 		building_phase = 0
 		state = Nothing
