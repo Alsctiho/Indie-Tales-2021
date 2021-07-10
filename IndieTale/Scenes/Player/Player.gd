@@ -137,7 +137,7 @@ func get_hit(dir):
 func update_health():
 	print("HP: " + String(health))
 	if (health <= 0):
-		get_tree().reload_current_scene()
+		get_tree().change_scene("res://Scenes/MainMenu.tscn")
 
 func _on_timer_timeout():
 #	print("Move!")
