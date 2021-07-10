@@ -29,7 +29,7 @@ func get_mouse_rotation() -> float:
 
 func building_turret() -> void:
 	# The first phase: position
-	if building_phase == 0:
+	if building_phase == 1:
 		turret_instance.position = get_global_mouse_position()
 		if turret_instance.get_overlapping_bodies().size() == 0:
 			turret_instance.get_node("TurretSprite").modulate = Color(1.0, 1.0, 1.0, 1.0)
@@ -39,13 +39,13 @@ func building_turret() -> void:
 			turret_instance.get_node("TurretSprite").modulate = Color(0.8, 0.0, 0.0, 1.0)
 
 	# The second phase: rotation
-	elif building_phase == 1:
+	elif building_phase == 2:
 		turret_instance.rotation = get_mouse_rotation()
 		if Input.is_action_just_pressed("ui_left_click"):
 			building_phase += 1
 
 	# The third phase: building
-	elif building_phase == 2:
+	elif building_phase == 3:
 		self.remove_child(turret_instance)
 		print(get_node("/root/World/Turrets"))
 		get_node("/root/World/Turrets").build_turret(turret_instance.position, turret_instance.rotation, state)
@@ -62,5 +62,8 @@ func instance_turret() -> void:
 
 func _on_TurretBlue_pressed() -> void:
 	state = Blue
-	print("pressed!")
-	instance_turret()
+#	print("pressed!", building_phase)
+	# The zero-th phase: preperation
+	if building_phase == 0:
+		instance_turret()
+		building_phase += 1
