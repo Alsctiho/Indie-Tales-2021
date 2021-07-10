@@ -1,13 +1,27 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UI/TurretBuilder.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Turrets/Turret.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/UI/TurretBlue.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/UI/ScoreLabel.gd" type="Script" id=4]
+[ext_resource path="res://Assets/UI/LifeBarBackground.png" type="Texture" id=5]
+[ext_resource path="res://Assets/UI/LifeBarIcon.png" type="Texture" id=6]
+[ext_resource path="res://Assets/UI/LifeBarEnergy.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/UI/TextureProgress.gd" type="Script" id=8]
+[ext_resource path="res://Assets/Fonts/Silver.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Assets/UI/CoinIcon.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/UI/Label.gd" type="Script" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 29
+extra_spacing_top = 8
+font_data = ExtResource( 9 )
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 0.749207
+margin_right = 0.749268
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -15,7 +29,7 @@ __meta__ = {
 
 [node name="TurretBuilder" parent="." instance=ExtResource( 2 )]
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="TurretBuilderUI" type="TextureRect" parent="."]
 anchor_left = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -27,19 +41,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TurretBuilderUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="Background/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TurretBuilderUI/VBoxContainer"]
 margin_right = 164.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 
-[node name="Label" type="Label" parent="Background/VBoxContainer"]
+[node name="Label" type="Label" parent="TurretBuilderUI/VBoxContainer"]
 margin_top = 54.0
 margin_right = 164.0
 margin_bottom = 94.0
@@ -49,7 +63,7 @@ text = "Select The Turret
 align = 1
 valign = 1
 
-[node name="TurretBlue" type="TextureButton" parent="Background/VBoxContainer"]
+[node name="TurretBlue" type="TextureButton" parent="TurretBuilderUI/VBoxContainer"]
 margin_left = 32.0
 margin_top = 98.0
 margin_right = 132.0
@@ -58,30 +72,124 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource( 3 )
 stretch_mode = 3
+
+[node name="TextureButton2" type="TextureButton" parent="TurretBuilderUI/VBoxContainer"]
+margin_left = 32.0
+margin_top = 202.0
+margin_right = 132.0
+margin_bottom = 302.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 3 )
+stretch_mode = 3
+
+[node name="TextureButton3" type="TextureButton" parent="TurretBuilderUI/VBoxContainer"]
+margin_left = 32.0
+margin_top = 306.0
+margin_right = 132.0
+margin_bottom = 406.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 3 )
+stretch_mode = 3
+
+[node name="LifeBarUI" type="NinePatchRect" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 300.0
+margin_bottom = 60.0
+rect_scale = Vector2( 0.9948, 0.997265 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LifeBarUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="LifeBarUI/HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 6 )
+
+[node name="TextureProgress" type="TextureProgress" parent="LifeBarUI/HBoxContainer"]
+margin_left = 44.0
+margin_right = 279.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 235, 40 )
+value = 100.0
+texture_progress = ExtResource( 7 )
+script = ExtResource( 8 )
+
+[node name="GoldAmountUI" type="NinePatchRect" parent="."]
+margin_left = 20.0
+margin_top = 70.0
+margin_right = 20.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 150, 40 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GoldAmountUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="GoldAmountUI/HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="GoldAmountUI/HBoxContainer"]
+margin_left = 44.0
+margin_right = 150.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 100, 40 )
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "400"
+valign = 1
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreUI" type="NinePatchRect" parent="."]
+margin_left = 452.0
+margin_top = 20.0
+margin_right = 540.655
+margin_bottom = 58.5763
+rect_min_size = Vector2( 120, 40 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="ScoreUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+text = "100"
+align = 1
+valign = 1
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TextureButton2" type="TextureButton" parent="Background/VBoxContainer"]
-visible = false
-margin_left = 32.0
-margin_top = 202.0
-margin_right = 132.0
-margin_bottom = 302.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource( 3 )
-stretch_mode = 3
-
-[node name="TextureButton3" type="TextureButton" parent="Background/VBoxContainer"]
-visible = false
-margin_left = 32.0
-margin_top = 202.0
-margin_right = 132.0
-margin_bottom = 302.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource( 3 )
-stretch_mode = 3
-
-[connection signal="pressed" from="Background/VBoxContainer/TurretBlue" to="TurretBuilder" method="_on_TurretBlue_pressed"]
+[connection signal="pressed" from="TurretBuilderUI/VBoxContainer/TurretBlue" to="TurretBuilder" method="_on_TurretBlue_pressed"]
 
 [editable path="TurretBuilder"]
