@@ -12,9 +12,15 @@ var state: int = Nothing
 var building_phase = 0
 var turret_instance = null
 
+const TURRENT_COST = 15
+
 const turret_node_path = "res://Scenes/Turrets/FakeTurret.tscn"
 const texture_path = ["res://Assets/Turrets/TurretTest.png", "res://Assets/Turrets/Turret.png"]
 
+var playerNode = null
+
+func _ready():
+	playerNode = get_node("/root/World/Player")
 
 func _process(_delta):		
 	if state != Nothing:
@@ -64,6 +70,6 @@ func _on_TurretBlue_pressed() -> void:
 	state = Blue
 #	print("pressed!", building_phase)
 	# The zero-th phase: preperation
-	if building_phase == 0:
+	if building_phase == 0 && playerNode.use_money(TURRENT_COST):
 		instance_turret()
 		building_phase += 1

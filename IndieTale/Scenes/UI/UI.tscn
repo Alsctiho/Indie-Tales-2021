@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UI/TurretBuilder.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Turrets/Turret.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/UI/TurretBuilder.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/UI/TurretBlue.gd" type="Script" id=4]
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
@@ -14,7 +14,6 @@ __meta__ = {
 }
 
 [node name="TurretBuilder" parent="." instance=ExtResource( 2 )]
-script = ExtResource( 4 )
 
 [node name="Background" type="TextureRect" parent="."]
 anchor_left = 0.8
@@ -59,8 +58,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource( 3 )
 stretch_mode = 3
+script = ExtResource( 4 )
 
 [node name="TextureButton2" type="TextureButton" parent="Background/VBoxContainer"]
+visible = false
 margin_left = 32.0
 margin_top = 202.0
 margin_right = 132.0
@@ -71,10 +72,11 @@ texture_normal = ExtResource( 3 )
 stretch_mode = 3
 
 [node name="TextureButton3" type="TextureButton" parent="Background/VBoxContainer"]
+visible = false
 margin_left = 32.0
-margin_top = 306.0
+margin_top = 202.0
 margin_right = 132.0
-margin_bottom = 406.0
+margin_bottom = 302.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource( 3 )
