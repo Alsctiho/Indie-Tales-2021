@@ -35,6 +35,7 @@ var is_portal_1 = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("Hitbox").connect("body_entered", self, "_on_Hitbox_body_entered")
+	z_index = 5
 
 func _process(delta):
 	if Input.is_action_just_pressed("fire"):

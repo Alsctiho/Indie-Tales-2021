@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/World.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UI/UI.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Turrets/Turrets.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/GUI.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/Portals/MonsterPortal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Monsters/MonsterPortalAdder.tscn" type="PackedScene" id=8]
 
 [node name="World" type="Node2D"]
 scale = Vector2( 1, 0.99561 )
@@ -47,3 +48,5 @@ otherPortalPath = NodePath("../Portals")
 
 [node name="MonsterPortal" parent="." instance=ExtResource( 7 )]
 position = Vector2( 72, 385.693 )
+
+[node name="MonsterPortalAdder" parent="." instance=ExtResource( 8 )]

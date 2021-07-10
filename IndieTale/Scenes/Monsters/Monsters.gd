@@ -26,6 +26,7 @@ func _ready():
 	playerNode = get_node("/root/World/Player")
 	opacity = 0
 	$Sprite.modulate = Color(1.0, 1.0, 1.0, opacity)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
