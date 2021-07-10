@@ -11,11 +11,9 @@ export (PackedScene) var monster_scene = preload("res://Scenes/Monsters/Monsters
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
 
 func _on_Timer_timeout():
 	var monster = monster_scene.instance()

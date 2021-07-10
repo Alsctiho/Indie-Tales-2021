@@ -32,7 +32,9 @@ func _physics_process(delta):
 	
 	motion = move_and_slide(motion)
 
-
 func _on_Hitbox_body_entered(body):
 	body.queue_free()
+	queue_free()
+	
+func explode():
 	queue_free()

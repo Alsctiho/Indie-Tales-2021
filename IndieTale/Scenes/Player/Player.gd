@@ -141,8 +141,9 @@ func _on_timer_timeout():
 	
 	timer.stop()
 
-
-func _on_Hitbox_body_entered(body):
+func _on_Hitbox_body_entered(monster):
 #	print(body)
-	if (state == PLAYER_STATE.move):
-		get_hit((position - body.position).normalized() * HIT_DISTANCE)
+	
+	get_hit((position - monster.position).normalized() * HIT_DISTANCE)
+	monster.explode()
+		
