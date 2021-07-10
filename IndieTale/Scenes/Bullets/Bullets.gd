@@ -2,15 +2,16 @@ extends RigidBody2D
 #
 #const FRICTION = 0.8
 #
+var bullet_speed = 2000
 const MIN_SPEED = 0.9
 #
 var started_moving
 var creator
 #
-## Called when the node enters the scene tree for the first time.
-#func _ready():
-#	pass # Replace with function body.
-#
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	z_index = 10
+
 #func _physics_process(delta):
 #	var friction_force = -linear_velocity * FRICTION * delta
 ##	print(friction_force)

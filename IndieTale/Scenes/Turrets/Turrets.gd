@@ -10,7 +10,6 @@ enum {
 
 var turret_type_names = ["res://Assets/Turrets/TurretTest.png", "res://Assets/Turrets/Turret.png"]
 
-
 # Return true if building success, return false if it fails
 # rot should be radius
 func build_turret(pos: Vector2, rot: float, turret_type) -> void:

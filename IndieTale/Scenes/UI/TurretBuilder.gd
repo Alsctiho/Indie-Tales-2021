@@ -22,7 +22,6 @@ func _process(_delta):
 
 func get_mouse_rotation() -> float:
 	var normalized_vector = (get_global_mouse_position() - turret_instance.position).normalized()
-#	print(normalized_vector.cross(Vector2.UP))
 	if normalized_vector.y < 0:
 		return asin(Vector2.UP.cross(normalized_vector))
 	else:
@@ -37,7 +36,7 @@ func building_turret() -> void:
 			if Input.is_action_just_pressed("ui_left_click"):
 				building_phase += 1
 		else:
-			turret_instance.get_node("TurretSprite").modulate = Color(1.0, 0.0, 0.0, 1.0)
+			turret_instance.get_node("TurretSprite").modulate = Color(0.8, 0.0, 0.0, 1.0)
 
 	# The second phase: rotation
 	elif building_phase == 1:
@@ -51,7 +50,7 @@ func building_turret() -> void:
 		print(get_node("/root/World/Turrets"))
 		get_node("/root/World/Turrets").build_turret(turret_instance.position, turret_instance.rotation, state)
 		
-		# if building success, doing clean up
+		# If building success, doing clean up
 		turret_instance = null
 		building_phase = 0
 		state = Nothing
